@@ -8,17 +8,20 @@
 
 ## how to install
 
-	* connect your raspberry pi with a `plain raspian version`, using `pi` as user and a default pw
-	* install git: 
+	- connect your raspberry pi with a `plain raspian version`, using `pi` as user and a default pw
+	- install git: 
+	
 		```bash 
 		sudo apt-get install git
 		```
-	* clone this repo: 
+	- clone this repo: 
+	
 		```bash 
 		git clone ...
 		```
-	* solving the dependencies and change the source of video 
-	* run :
+	- solving the dependencies and change the source of video 
+	- run :
+	
 		```bash
 		sh run
 		```
