@@ -1,0 +1,3 @@
+git add *
+git commit -m 'copia inicial do codigo do Johannes'
+git push -u origin master
