@@ -9,22 +9,25 @@
 ## how to install
 
 	- connect your raspberry pi with a `plain raspian version`, using `pi` as user and a default pw
+
 	- install git: 
 	
-		```bash 
-		sudo apt-get install git
-		```
-	- clone this repo: 
-	
-		```bash 
-		git clone ...
-		```
-	- solving the dependencies and change the source of video 
-	- run :
-	
-		```bash
-		sh run
-		```
+		``` sudo apt-get install git ```
 
-*** thanks  ***
+	- clone this repo: 
+
+	
+		``` git clone https://github.com/andrebalen/rpi-belt-counter-fw.git ```
+
+
+	- solving the dependencies and change the source of video 
+
+	- run :
+
+	
+		``` sh run ```
+
+
+
+*** we are constantly improving  ***
 
