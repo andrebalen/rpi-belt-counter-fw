@@ -21,6 +21,8 @@ sudo apt-get install aptitude git
 sudo aptitude install python-pip
 pip install pandas
 pip install numpy
+pip install imutils
+
 
 ```
 
@@ -29,7 +31,9 @@ add this to PATH:  /home/pi/.local/bin
 TODO: need some talent here ...
 
 ```
+
 echo '/home/pi/.local/bin' >
+
 
 ```
 
@@ -38,25 +42,27 @@ echo '/home/pi/.local/bin' >
 connect your raspberry pi with a `plain raspian version`, using `pi` as user and a default pw
 
  clone this repo: 
+
 	
-	```
+```
 
-	 git clone https://github.com/andrebalen/rpi-belt-counter-fw.git
+ git clone https://github.com/andrebalen/rpi-belt-counter-fw.git
 
-	 ```
 
- solving the dependencies and change the source of video 
+```
+
+solving the dependencies and change the source of video 
 
 
 
  run :
 
-	``` 
+``` 
 
-	sh run
+sh run
 
 
-	 ```
+ ```
 
 we are constantly improving
 
