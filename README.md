@@ -18,21 +18,11 @@ sw - connect your rpi and run this commands on terminal
 ```
 
 sudo apt-get install aptitude git
+sudo aptitude install python-opencv
 sudo aptitude install python-pip
 pip install pandas
 pip install numpy
 pip install imutils
-
-
-```
-
-add this to PATH:  /home/pi/.local/bin
-
-TODO: need some talent here ...
-
-```
-
-echo '/home/pi/.local/bin' >
 
 
 ```
@@ -51,7 +41,7 @@ connect your raspberry pi with a `plain raspian version`, using `pi` as user and
 
 ```
 
-solving the dependencies and change the source of video 
+solving the dependencies ( as listed below) and change the source of video 
 
 
 
