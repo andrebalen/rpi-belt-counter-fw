@@ -1,4 +1,4 @@
 git pull
 git add *
-git commit -m 'resolucao de dependencias'
+git commit -m 'ajustes finais de dependencias'
 git push
