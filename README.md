@@ -17,12 +17,14 @@ sw - connect your rpi and run this commands on terminal
  
 ```
 
+
 sudo apt-get install aptitude git
-sudo aptitude install python-opencv
 sudo aptitude install python-pip
-pip install pandas
-pip install numpy
-pip install imutils
+pip3 install pandas
+pip3 install numpy
+sudo apt-get install libatlas-base-dev
+pip3 install opencv-python
+pip3 install imutils
 
 
 ```
