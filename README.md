@@ -43,7 +43,6 @@ connect your raspberry pi with a `plain raspian version`, using `pi` as user and
 solving the dependencies ( as listed below) and change the source of video 
 
 
-
  run :
 
 ``` 
@@ -51,7 +50,7 @@ solving the dependencies ( as listed below) and change the source of video
 sh run
 
 
- ```
+```
 
 
 ## other troubleshoting
@@ -59,55 +58,43 @@ sh run
 
 some troubles can be caused by a low swap memory, to solve this: 
 
-
-'''
-
+```
 
  sudo nano /etc/dphys-swapfile
 
-'''
-
+```
 
 change the amount of swap to 1024 like:
 
-
-'''
+```
 
 #CONF_SWAPSIZE=100
 CONF_SWAPSIZE=1024
 
-'''
-
+```
 save and restart the swap service with:
 
-
-'''
-
+```
 
 sudo /etc/init.d/dphys-swapfile restart
 
-
-
-'''
-
-
+```
 
 to see how much free mem just type:
 
 
-'''
 
+```
 
  free -m
 
-
-'''
+```
 
 
 results in:
 
 
-'''
+```
 
  pi@rasp:~ $ free -m
 
@@ -117,37 +104,35 @@ results in:
 Mem: 434 21 359 5 53 360
  Swap: 1023 0 1023
 
-'''
-
+```
 
 
 Locale config, avoid errors
 
 Digite:
 
-'''
+```
 
  sudo raspi-config
 
-'''
+```
 
 in: 
 
 localization options/Change locale change to: : pt_BR UTF8 UTF8
 
-change timezoneâchange to: Sao Paulo
+change timezone  to: Sao Paulo
 
-Change Wifi country change to: selecione BR
+Change Wifi country  to:  BR
 
 to this make effect: 
 
 
-'''
+```
 
 sudo reboot
 
-''' 
-
+```
 
 OpenCV3 research:
 
