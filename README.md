@@ -56,7 +56,3 @@ sh run
 
 we are constantly improving
 
-## Teste
-
-Quero testar como o Git junta dois readme 
-
