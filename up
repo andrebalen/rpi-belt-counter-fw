@@ -1,4 +1,5 @@
 git pull
+date > lastChage.txt
 git add *
-git commit -m 'ajustes finais de dependencias'
+git commit -m 'bem mais perto'
 git push
