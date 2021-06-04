@@ -3,6 +3,9 @@ import pandas as pd
 import cv2 as cv
 import imutils
 from collections import OrderedDict
+from picamera.array import PiRGBArray
+from picamera import PiCamera
+import picamera
 import time
 import datetime
 
@@ -16,7 +19,7 @@ def Contagem(x, LineX):
         return 0
 
 
-cap = cv.VideoCapture('Video Sample 6.mp4')
+cap = cv.VideoCapture('/home/pi/rpi-belt-counter-fw/Video Sample 6.mp4')
 contador = 0
 lastcount = 0
 start = time.time()
@@ -26,8 +29,8 @@ while True:
     
     #Cortando e Separando
     _, frame = cap.read()   
-    belt = frame[359:648, 587:1080]
-    gray_belt = cv.cvtColor(belt, cv.COLOR_BGR2GRAY)
+    #belt = frame[359:648, 587:1080]
+    gray_belt = cv.cvtColor(frame, cv.COLOR_BGR2GRAY)
     _, threshold = cv.threshold(gray_belt, 140, 255, cv.THRESH_BINARY)
     now = time.time() - start
     intervalo = now - lastcount
@@ -107,9 +110,9 @@ while True:
     cv.putText(frame, "Intervalo: {}".format(str(intervalo)), (10, 120), cv.FONT_HERSHEY_SIMPLEX, 1, (0, 50, 1), 2)
     cv.putText(frame, "timestamp: {}".format(str(lastcount)), (10, 150), cv.FONT_HERSHEY_SIMPLEX, 1, (0, 50, 1), 2)
     cv.imshow("frame",frame)
-    cv.imshow("belt", belt)
-    cv.imshow("belt gray", gray_belt)
-    cv.imshow("threshold", threshold)
+    #cv.imshow("belt", belt)
+    #cv.imshow("belt gray", gray_belt)
+    #cv.imshow("threshold", threshold)
    
     if cv.waitKey(10) == ord('q'):
         break
