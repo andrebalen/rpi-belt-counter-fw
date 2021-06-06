@@ -12,7 +12,6 @@ import datetime
 #Counting function
 def Contagem(x, LineX):
     DistAbs = abs(x - LineX)
-    #time.sleep(1) #intervalo entre checagens (debouncing simplificado)
 
     if DistAbs <= 3:
         return 1
@@ -21,9 +20,9 @@ def Contagem(x, LineX):
 
 #setting up PiCamera
 camera = PiCamera()
-camera.resolution = (320, 240)
-camera.framerate = 5
-rawCapture = PiRGBArray (camera, size=(320, 240))
+camera.resolution = (320, 320)
+camera.framerate = 10
+rawCapture = PiRGBArray (camera, size=(320, 320))
 
 contador = 0
 lastcount = 0
@@ -36,17 +35,22 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
     
     cap = frame.array
     
-    #Cutting the video and setting threshold
-    _, video = cap.read() 
-    belt = video[359:648, 587:1080]
+    ymin = 0
+    ymax = 320
+    xmin = 60
+    xmax = 240
+    belt = cap[ymin:ymax, xmin:xmax] #Cropping the video 'Ymin:Ymax,Xmin:Xmax'
     gray_belt = cv.cvtColor(belt, cv.COLOR_BGR2GRAY)
     _, threshold = cv.threshold(gray_belt, 140, 255, cv.THRESH_BINARY)
     now = time.time() - start #Seconds since it starts
     intervalo = now - lastcount #Checking interval between counted objects in seconds
     
     #Creating counting lane
-    LineX = 700
-    cv.line(frame, (LineX,300), (LineX,600), (0, 200, 0), 3) #Talvez esse tenha interface grafica
+    LineX = 180
+    cv.line(cap, (LineX,30), (LineX,180), (0, 200, 0), 3) #Talvez esse tenha interface grafica
+    
+    
+    
     
     
     #Detecting objects 
@@ -58,8 +62,8 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
         if 8500> area > 5000:
             #Creating the bounding rectangle
             (f, l, w, h) = cv.boundingRect(cnt)
-            x = 587 + f
-            y = 359 + l
+            x = xmin + f
+            y = ymin + l
             cv.rectangle(frame, (x,y), (x+w, y+h), (255,0,0), 3)
             cv.putText(frame, str(area), (x, y), 1, 1, (0, 255, 0))
             
@@ -85,8 +89,8 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
             #Criando o contorno (sacos agrupados)
             (f, l, w, h) = cv.boundingRect(cnt)
             t = int(w/2)
-            x = 587 + f
-            y = 359 + l
+            x = xmin + f
+            y = ymin + l
             rec1 = cv.rectangle(frame, (x,y), (x+t, y+h), (255,0,0), 3)
             rec2 = cv.rectangle(frame, (x+t,y), (x+t+t, y+h), (0,255,0), 3)
             cv.putText(frame, str(area), (x, y), 1, 1, (0, 255, 0))
@@ -115,22 +119,18 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
                 hora = time.time()
                 datahora = time.gmtime(hora)
                 d = d.append ({'timestamp' : datahora}, ignore_index=True)
-      
     
-    #Mostrando Videos
+    
+    
+    
+    
+    
+    
     # Display the resulting frame
-    cv.putText(frame, "Contagem: {}".format(str(contador)), (10, 40), cv.FONT_HERSHEY_SIMPLEX, 1, (0, 50, 1), 2)
-    cv.putText(frame, "Tempo: {}".format(str(now)), (10, 80), cv.FONT_HERSHEY_SIMPLEX, 1, (0, 50, 1), 2)
-    cv.putText(frame, "Intervalo: {}".format(str(intervalo)), (10, 120), cv.FONT_HERSHEY_SIMPLEX, 1, (0, 50, 1), 2)
-    cv.putText(frame, "timestamp: {}".format(str(lastcount)), (10, 150), cv.FONT_HERSHEY_SIMPLEX, 1, (0, 50, 1), 2)
-    cv.imshow("video",video)
-    cv.imshow("belt", belt)
-    cv.imshow("belt gray", gray_belt)
-    cv.imshow("threshold", threshold)
-    
-    
-    
-    
+    cv.imshow('cap', cap)
+    cv.imshow('gb', gray_belt)
+    cv.imshow('belt', belt)
+    cv.imshow('threshold', threshold)
     
     rawCapture.truncate(0)
     # the 'q' button is set as the

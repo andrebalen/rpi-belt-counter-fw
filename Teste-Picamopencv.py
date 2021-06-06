@@ -50,6 +50,7 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
     cv.imshow('cap', cap)
     cv.imshow('gb', gray_belt)
     cv.imshow('belt', belt)
+    cv.imshow('threshold', threshold)
     
     rawCapture.truncate(0)
     # the 'q' button is set as the
