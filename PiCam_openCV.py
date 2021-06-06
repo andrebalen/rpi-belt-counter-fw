@@ -1,6 +1,7 @@
 import numpy as np
 import pandas as pd
 import cv2 as cv
+import imutils
 from picamera.array import PiRGBArray
 from picamera import PiCamera
 import picamera

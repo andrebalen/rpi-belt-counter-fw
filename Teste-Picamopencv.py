@@ -36,20 +36,20 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
     
     cap = frame.array
     
-    _, video = cap.read() 
-    belt = video[359:648, 587:1080]
+    belt = cap[48:240, 100:220]
     gray_belt = cv.cvtColor(belt, cv.COLOR_BGR2GRAY)
     _, threshold = cv.threshold(gray_belt, 140, 255, cv.THRESH_BINARY)
     now = time.time() - start #Seconds since it starts
     intervalo = now - lastcount #Checking interval between counted objects in seconds
     
     #Creating counting lane
-    LineX = 700
-    cv.line(frame, (LineX,300), (LineX,600), (0, 200, 0), 3) #Talvez esse tenha interface grafica
+    LineX = 180
+    cv.line(cap, (LineX,30), (LineX,180), (0, 200, 0), 3) #Talvez esse tenha interface grafica
     
     # Display the resulting frame
-    cv.imshow('video', video)
-    
+    cv.imshow('cap', cap)
+    cv.imshow('gb', gray_belt)
+    cv.imshow('belt', belt)
     
     rawCapture.truncate(0)
     # the 'q' button is set as the
