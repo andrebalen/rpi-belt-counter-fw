@@ -48,7 +48,7 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
     cv.line(frame, (LineX,300), (LineX,600), (0, 200, 0), 3) #Talvez esse tenha interface grafica
     
     # Display the resulting frame
-    cv.imshow('frame', cap)
+    cv.imshow('video', video)
     
     
     rawCapture.truncate(0)
