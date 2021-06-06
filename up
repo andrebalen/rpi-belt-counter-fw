@@ -1,3 +1,4 @@
+git pull
 date > lastChage.txt
 git add *
 git commit -m 'bem mais perto'
