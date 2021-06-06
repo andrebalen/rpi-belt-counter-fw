@@ -36,6 +36,10 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
     
     cap = frame.array
     
+<<<<<<< HEAD
+=======
+
+>>>>>>> 01c2beed3182a1810c29478b2d6cd6c28ed2fedb
     belt = cap[48:240, 100:220] #Cropping the video
     gray_belt = cv.cvtColor(belt, cv.COLOR_BGR2GRAY)
     _, threshold = cv.threshold(gray_belt, 140, 255, cv.THRESH_BINARY)
